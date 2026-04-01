@@ -14,6 +14,7 @@ import DashboardPage from './pages/DashboardPage'
 
 const App = () => {
   const [user, setUser] = useState();
+  
   const onLogout = () => {
     setUser(null)
   }
@@ -31,7 +32,7 @@ const App = () => {
 
         <Route path="/about" element={<AboutPage />}/>
 
-        <Route path="posts" element={<PostPage />}>
+        <Route path="/posts" element={<PostPage />}>
           <Route index element={<PostListPage />}/>
           <Route path=":slug" element={<PostDetailPage />}/>
         </Route>
