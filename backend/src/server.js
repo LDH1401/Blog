@@ -21,6 +21,21 @@ const data = [
   },
 ];
 
+const user = [
+  {
+    id: 1,
+    username: "admin",
+    password: "123",
+    role: "admin",
+  },
+  {
+    id: 2,
+    username: "user",
+    password: "123",
+    role: "user",
+  }
+]
+
 app.get("/posts", (req, res) => {
     return res.json(data);
 })
@@ -33,6 +48,34 @@ app.get("/posts/:slug", (req, res) => {
     }
 
     return res.json(post);
+})
+
+app.get("/users", (req, res) => {
+    return res.json(user);
+})
+
+app.post("/addpost", (req, res) => {
+    const {slug, title, content} = req.body;
+    const newPost = {
+        id: data.length + 1,
+        slug,
+        title,
+        content,
+    }
+    data.push(newPost);
+    return res.status(201).json(newPost);
+})
+
+app.post("/signin", (req, res) => {
+    const creds = {
+    username: req.body.username,
+    password: req.body.password,
+  };
+  if(creds.username === "hung" && creds.password === "123"){
+    res.status(200).send({ message: "Đăng nhập thành công!" });
+  }else{
+    res.status(400).send({ message: "Đăng nhập thất bại!" });
+  }
 })
 
 const PORT = 8080;

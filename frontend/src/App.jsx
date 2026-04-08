@@ -11,7 +11,7 @@ import { useState } from 'react'
 import NavBar from './components/NavBar'
 import ProtectedRoute from './components/ProtectedRoute'
 import DashboardPage from './pages/DashboardPage'
-
+import AddNewPostPage from './pages/AddNewPostPage'
 const App = () => {
   const [user, setUser] = useState();
   
@@ -39,6 +39,10 @@ const App = () => {
 
         <Route element={<ProtectedRoute user={user}/>}>
           <Route path='/dashboard' element={<DashboardPage/>}/>
+        </Route>
+
+        <Route element={<ProtectedRoute user={user} />}>
+           <Route path='/addnewpost' element={<AddNewPostPage/>}/>
         </Route>
 
         <Route path='/signin' element={<SignInPage onLogin={onLogin} />}/>

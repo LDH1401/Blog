@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const SignInPage = ({onLogin}) => {
-    const [formData, setFormData] = useState({name: "", pass: ""});
+    const [formData, setFormData] = useState({username: "", password: ""});
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -10,23 +10,25 @@ const SignInPage = ({onLogin}) => {
         setFormData((prev) => ({...prev, [name]: value}));
     }
 
-    const handleLogin = () => {
-        if(formData.name === "admin" && formData.pass === "123"){
+    const handleLogin = async () => {
+        try{
+            const res = await axios.post("http://localhost:8080/signin", formData);
+            alert("Đăng nhập thành công!");
+            onLogin(formData.username);
             navigate("/dashboard");
-            onLogin(formData.name);
-        }else{
-            alert("MK sai")
+        }catch(error){
+            alert("Tên đăng nhập hoặc mật khẩu không đúng!");
         }
     }
 
     return (
         <div>
             <h3>Vui lòng đăng nhập tài khoản!</h3>
-            <label htmlFor="name">Tên đăng nhập: </label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange}/>
+            <label htmlFor="username">Tên đăng nhập: </label>
+            <input type="text" name="username" value={formData.username} onChange={handleChange}/>
             <br/>
-            <label htmlFor="pass">Mật khẩu: </label>
-            <input type="password" name="pass" value={formData.pass} onChange={handleChange}/>
+            <label htmlFor="password">Mật khẩu: </label>
+            <input type="password" name="password" value={formData.password} onChange={handleChange}/>
             <br/>
             <button onClick={handleLogin}>Đăng nhập</button>
         </div>

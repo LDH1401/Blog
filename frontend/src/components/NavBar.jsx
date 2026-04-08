@@ -14,6 +14,7 @@ const NavBar = ({user, onLogout}) => {
             <Link to="/posts">Post</Link>
             {user && <Link to="/dashboard">Dashboard</Link>}
             {!user && <Link to="/signin">SignIn</Link>}
+            {user && <Link to="/addnewpost">Add New Post</Link>}
             {user && <button onClick={logout}>Logout</button>}
        </nav>
     )
