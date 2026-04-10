@@ -6,7 +6,7 @@ const AddNewPostPage = () => {
 
     const onSubmit = async (data) => {
         try{
-            const res = await axios.post("http://localhost:8080/addpost", data);
+            const res = await axios.post("http://localhost:8080/api/posts", data);
             alert("Post added successfully!");
         }catch(error){
             console.error("Error adding post:", error);

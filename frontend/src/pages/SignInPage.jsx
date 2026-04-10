@@ -12,7 +12,7 @@ const SignInPage = ({onLogin}) => {
 
     const handleLogin = async () => {
         try{
-            const res = await axios.post("http://localhost:8080/signin", formData);
+            const res = await axios.post("http://localhost:8080/api/auth/signin", formData);
             alert("Đăng nhập thành công!");
             onLogin(formData.username);
             navigate("/dashboard");

@@ -15,7 +15,7 @@ const PostDetailPage = () => {
         const fetchData = async () => {
             try{
                 setLoading(true);
-                const res = await axios.get(`http://localhost:8080/posts/${slug}`);
+                const res = await axios.get(`http://localhost:8080/api/posts/${slug}`);
                 setData(res.data);
             }catch(error){
                 setError(error);
@@ -28,7 +28,7 @@ const PostDetailPage = () => {
 
     const handleAddComment = async () => {
         try{
-            const res = await axios.post(`http://localhost:8080/posts/${slug}/comments`, { text: comment });
+            const res = await axios.post(`http://localhost:8080/api/posts/${slug}/comments`, { text: comment });
             setData((prevData) => ({
                 ...prevData,
                 comments: [...prevData.comments, res.data.data],

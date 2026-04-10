@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
-import PostListPage from './pages/PostListPage'
+import PostListPage from './pages/PostListPage/PostListPage'
 import PostPage from './pages/PostPage'
 import PostDetailPage from "./pages/PostDetailPage"
 import SignInPage from './pages/SignInPage'
 import { useState } from 'react'
-import NavBar from './components/NavBar'
+import NavBar from './components/Navbar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute'
 import DashboardPage from './pages/DashboardPage'
 import AddNewPostPage from './pages/AddNewPostPage'
@@ -41,8 +41,8 @@ const App = () => {
           <Route path='/dashboard' element={<DashboardPage/>}/>
         </Route>
 
-        <Route element={<ProtectedRoute user={user} />}>
-           <Route path='/addnewpost' element={<AddNewPostPage/>}/>
+        <Route element={<ProtectedRoute user={user}/>}>
+          <Route path='/addnewpost' element={<AddNewPostPage/>}/>
         </Route>
 
         <Route path='/signin' element={<SignInPage onLogin={onLogin} />}/>

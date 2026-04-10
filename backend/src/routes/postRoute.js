@@ -3,12 +3,12 @@ import { createPost, getPosts, getPostBySlug, addComment  } from '../controllers
 
 const router = express.Router();
 
-router.post('/', createPost);
+router.post('/', createPost); // Tạo bài viết mới
 
-router.get('/', getPosts);
+router.get('/', getPosts); // Lấy tất cả bài viết
 
-router.get('/:slug', getPostBySlug);
+router.get('/:slug', getPostBySlug); // Lấy bài viết theo slug
 
-router.post('/:slug/comments', addComment);
+router.post('/:slug/comments', addComment); // Thêm bình luận vào bài viết theo slug
 
 export default router;

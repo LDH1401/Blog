@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
+import "./PostListPage.css";
 
 const PostListPage = () => {
     const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ const PostListPage = () => {
         const fetchData = async () => {
             try{
                 setLoading(true);
-                const res = await axios.get("http://localhost:8080/posts");
+                const res = await axios.get("http://localhost:8080/api/posts");
                 setData(res.data)
             } catch(error){
                 setError(error);
