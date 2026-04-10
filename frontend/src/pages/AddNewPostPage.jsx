@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useForm} from "react-hook-form";
 const AddNewPostPage = () => {
+    
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
